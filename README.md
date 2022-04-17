@@ -10,5 +10,10 @@ $ cat input.js
 [+!+[]] + [!+[] + !+[]] + [!+[] + !+[] + !+[]]
 
 $ cat input.js | jsunfuck read 
-123;
+"123";
 ```
+
+There are existing tools for this already, many of which approach this by using dictionaries to search for patterns.
+This works for output directly from one particular JSFuck code generator, however as soon as the dictionary is different, it no longer works and it requires you to know the dictionary that was used.
+For example, `[+[]]+[]`, `[+[]]+[[]]` and `[]+[+![]]` all produce the string `"0"`. This program understands all of those.
+This project tries to do this by deducing the syntax tree, without relying on a dictionary.

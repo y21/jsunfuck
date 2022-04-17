@@ -7,8 +7,6 @@ use dash_core::parser::statement::Statement;
 use dash_core::parser::token::TokenType;
 use itertools::Itertools;
 
-use crate::serialize::Serialize;
-
 pub trait Deduce {
     fn deduce(&mut self);
 }
@@ -26,7 +24,12 @@ fn stringify_expr<'a>(e: &mut Expr<'a>) -> Cow<'a, str> {
 
     match e {
         Expr::Array(arr) => Cow::Owned(arr.iter_mut().map(stringify_expr).join(",")),
-        Expr::Literal(lit) => lit.serialize(),
+        Expr::Literal(LiteralExpr::String(s)) => s.to_owned(),
+        Expr::Literal(LiteralExpr::Boolean(b)) => Cow::Borrowed(if *b { "true" } else { "false" }),
+        Expr::Literal(LiteralExpr::Number(n)) => Cow::Owned(n.to_string()),
+        Expr::Literal(LiteralExpr::Identifier(i)) => i.to_owned(),
+        Expr::Literal(LiteralExpr::Null) => Cow::Borrowed("null"),
+        Expr::Literal(LiteralExpr::Undefined) => Cow::Borrowed("undefined"),
         _ => todo!(),
     }
 }

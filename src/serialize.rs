@@ -66,7 +66,7 @@ impl<'a> Serialize<'a> for LiteralExpr<'a> {
             LiteralExpr::Boolean(b) => Cow::Borrowed(if *b { "true" } else { "false" }),
             LiteralExpr::Number(n) => Cow::Owned(format!("{}", n)),
             LiteralExpr::Identifier(i) => i.to_owned(),
-            LiteralExpr::String(s) => s.to_owned(),
+            LiteralExpr::String(s) => Cow::Owned(format!("\"{s}\"")),
             LiteralExpr::Null => Cow::Borrowed("null"),
             LiteralExpr::Undefined => Cow::Borrowed("undefined"),
         }

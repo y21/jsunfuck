@@ -9,8 +9,13 @@ use crate::deduce::Deduce;
 use crate::serialize::Serialize;
 
 fn process(source: &str) {
+    let src = (&source).chars().map(|x| match x {
+        '\n' => ' ',
+        '\r' => ' ',
+        _ => x
+    }).collect::<String>();
     // TODO: don't expect()
-    let ast = Parser::from_str(&source)
+    let ast = Parser::from_str(&src)
         .expect("Lexer error")
         .parse_all()
         .expect("Parser error");

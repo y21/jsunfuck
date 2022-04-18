@@ -58,7 +58,7 @@ dependencies = [
 [[package]]
 name = "dash-core"
 version = "0.1.2"
-source = "git+https://github.com/y21/dash?rev=3dc5e36#3dc5e364e2f9bc05faa94469d546ae6d9a1304c7"
+source = "git+https://github.com/y21/dash?rev=315f4ea#315f4ea630219f25304b85e57d7c4397492d192e"
 dependencies = [
  "dash-proc-macro",
 ]
@@ -66,7 +66,7 @@ dependencies = [
 [[package]]
 name = "dash-proc-macro"
 version = "0.1.0"
-source = "git+https://github.com/y21/dash?rev=3dc5e36#3dc5e364e2f9bc05faa94469d546ae6d9a1304c7"
+source = "git+https://github.com/y21/dash?rev=315f4ea#315f4ea630219f25304b85e57d7c4397492d192e"
 dependencies = [
  "proc-macro-crate",
  "quote",

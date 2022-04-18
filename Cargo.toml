@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-dash-core = { git = "https://github.com/y21/dash", rev = "3dc5e36" }
+dash-core = { git = "https://github.com/y21/dash", rev = "315f4ea" }
 clap = "3.0.0"
 anyhow = "1.0"
 itertools = "0.10.3"
